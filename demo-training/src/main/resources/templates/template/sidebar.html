@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <!-- Main Sidebar -->
+    <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0 menu-left" th:fragment="sidebar">
+        <div class="main-navbar">
+            <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                <a class="navbar-brand w-100 mr-0" th:href="@{/M/M04}" style="line-height: 25px;">
+                    <div class="d-table m-auto">
+                        <button type="button" class="btn btn-secondary">ロゴ</button>
+                    </div>
+                </a>
+                <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
+                    <i class="material-icons">&#xE5C4;</i>
+                </a>
+            </nav>
+        </div>
+        <div class="nav-wrapper">
+            <ul class="nav flex-column">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/M/M04}">
+                        <i class="fas fa-history mr-2"></i><span>送信履歴</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-list-ol mr-2"></i>
+                        <span>ユーザー一覧</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-server mr-2"></i>
+                        <span>中継サーバ</span>
+                    </a>
+                    <div class="navSub">
+                        <ul class="p-0">
+                            <li class="nav-item-sub">
+                                <a href="#" class="nav-link"><span>設定</span></a>
+                            </li>
+                            <li class="nav-item-sub">
+                                <a href="#" class="nav-link"><span>フォルダ一覧</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-hospital mr-2"></i>
+                        <span>医療機関サーバ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/M/M07}">
+                        <i class="fas fa-cogs mr-2"></i>
+                        <span>リトライ設定</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            window.addEventListener('load', function () {
+                var current = location.pathname;
+                $('#nav li a').each(function() {
+                    var $this = $(this);
+                    // if the current path is like this link, make it active
+                    if($this.attr('href').indexOf(current) !== -1){
+                        $this.addClass('active');
+                    }
+                })
+            });
+        </script>
+    </aside>
+</html>

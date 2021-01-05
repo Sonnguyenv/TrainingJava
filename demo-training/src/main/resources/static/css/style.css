@@ -1,0 +1,234 @@
+body{
+  word-wrap: break-word !important;
+  background-color: #fcfdfe;
+  font-size: 14px;
+}
+@font-face{
+    font-family:Font Awesome\ 5 Brands;
+    font-style:normal;
+    font-weight:400;
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.eot);
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.woff2) format("woff2"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.woff) format("woff"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.ttf) format("truetype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.svg#fontawesome) format("svg")
+}
+@font-face{
+    font-family:Font Awesome\ 5 Free;
+    font-style:normal;
+    font-weight:400;
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.eot);
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.eot?#iefix) format("embedded-opentype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.woff2) format("woff2"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.woff) format("woff"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.ttf) format("truetype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-regular-400.svg#fontawesome) format("svg")
+}
+@font-face{
+    font-family:Font Awesome\ 5 Free;
+    font-style:normal;
+    font-weight:900;
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.eot);
+    src:url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.woff2) format("woff2"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.woff) format("woff"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.ttf) format("truetype"),url(https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-solid-900.svg#fontawesome) format("svg")
+}
+#ui-datepicker-div {
+  font-size: 14px;
+}
+.login{
+  max-width: 700px;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+.link-text{
+  text-decoration: underline;
+}
+.link-text:hover{
+  text-decoration: underline !important;
+}
+.btn-120{
+  min-width: 120px;
+}
+.fz-20{
+  font-size: 20px;
+}
+.col-red{
+  color: red;
+}
+.col-gr{
+  color: #17a2b8;
+}
+.w-1000{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.hear-tab{
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fa-times-circle{
+  font-size: 16px;
+}
+.title-table{
+  font-size: 14px;
+}
+.bootstrap-select .dropdown-menu li a{
+  font-size: 14px;
+}
+.bootstrap-select > .dropdown-toggle{
+  line-height: 1.3;
+}
+i{
+  cursor: pointer;
+}
+.col-blue{
+  color: #007bff;
+}
+.col-white{
+  color: #fff;
+}
+.page-header .page-title {
+  font-size: 2rem;
+}
+.list-form{
+  max-width: 850px;
+  margin: 0 auto;
+}
+.page-header{
+  padding-bottom: 2.5rem!important;
+  padding-top: 2.5rem!important;
+}
+.list-form-info{
+  max-width: 680px;
+  margin: 0 auto;
+}
+.form-row>.col, .form-row>[class*=col-] {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.card-border {
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+.table{
+  white-space: nowrap;
+}
+.text-label{
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #5a6169;
+}
+.main-navbar .navbar .navbar-nav .dropdown-menu{
+  left: -15px;
+}
+.btn-danger {
+  color: #fff;
+  border-color: red;
+  background-color: red;
+  box-shadow: none;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #b90707;
+  border-color: #b90707;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(196, 24, 60, 0.25);
+}
+/* submenu */
+ul,li{
+  list-style: none;
+}
+.nav-wrapper ul li:hover .navSub {
+  display: block;
+}
+.navSub {
+  display: none;
+}
+.nav-item-sub a{
+  color: #3d5170;
+}
+.nav-item .nav-item-sub .nav-link{
+  background-color: #fff !important;
+}
+.nav-item .nav-item-sub .nav-link:hover{
+  box-shadow: none !important;
+}
+.main-sidebar .nav .nav-item .nav-item-sub .nav-link {
+  padding: .9375rem 2.5rem;
+}
+
+.bs-searchbox{
+  display: none;
+}
+ .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, .bootstrap-select > .dropdown-toggle.bs-placeholder:active{
+  color: #495057;
+  border: 1px solid #e1e5eb;
+  background-color: #fff;
+}
+.bootstrap-select > .dropdown-toggle.bs-placeholder, .bootstrap-select > .dropdown-toggle.bs-placeholder:hover{
+  border-color: #e1e5eb;
+}
+.btn-light:hover {
+  color: #212529;
+  background-color: #fff;
+  border-color: #b3bdcc;
+  box-shadow: initial;
+}
+.btn-light{
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #e1e5eb;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: .255em;
+  content: "";
+  border-top: 0.4em solid;
+  border-right: .4em solid transparent;
+  border-bottom: 0;
+  border-left: .4em solid transparent;
+}
+.bootstrap-select .dropdown-toggle:focus {
+  outline: inherit !important;
+  outline: inherit !important;
+  outline-offset: inherit !important;
+}
+.bootstrap-select .dropdown-toggle .filter-option:hover{
+  border-color: #b3bdcc;
+}
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle {
+  color: #495057;
+  background-color: #fff;
+  border-color: #007bff;
+  box-shadow: 0 0.313rem 0.719rem rgba(0,123,255,.1), 0 0.156rem 0.125rem rgba(0,0,0,.06);
+}
+.list-form-info .dropdown-menu {
+  padding: 0 !important;
+}
+.table-detail td{
+    border-radius: 0 !important;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+.bgr-white{
+  background-color: #fff;
+}
+@media only screen and (max-width: 992px) {
+  .page-header .page-title {
+    font-size: 1.6rem;
+  }
+  .form-control, .btn, .bootstrap-select .dropdown-toggle .filter-option{
+    font-size: 0.8rem;
+  }
+  .main-content-container{
+    padding: 0 15px !important;
+  }
+  .page-header {
+    padding-bottom: 1.8rem!important;
+    padding-top: 1.8rem!important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .custom-radio .custom-control-label::after {
+    width: 7px;
+    height: 7px;
+    top: 7px;
+    left: 5px;
+  }
+}
