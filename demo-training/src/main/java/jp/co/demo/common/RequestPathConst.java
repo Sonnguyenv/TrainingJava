@@ -23,8 +23,11 @@ public class RequestPathConst {
 
     // M02
     public static final String M02 = "/M/M02";
-    public static final String M02_1 = "/M/M02/M02_1";
-    public static final String M02_2 = "/M/M02/M02_2";
+    public static final String M02_01 = "/M/M02_01";
+    public static final String M02_02 = "/M/M02_02";
+
+    // M03
+    public static final String M03 = "/M/M03";
 
     // M04
     public static final String M04 = "/M/M04";

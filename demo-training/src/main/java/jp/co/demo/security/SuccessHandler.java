@@ -43,7 +43,7 @@ public class SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
         contextService.storesSecurityContextInRedis(request);
 
-        String url = request.getContextPath() + RequestPathConst.M04;
+        String url = request.getContextPath() + RequestPathConst.M02;
         response.setStatus(HttpStatus.OK.value());
         response.sendRedirect(url);
     }

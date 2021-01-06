@@ -10,7 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class M02Controller {
     @GetMapping(RequestPathConst.M02)
-    public String list() {
+    public String listUser() {
         return ScreenPathConst.M02_SCREEN;
+    }
+
+    @GetMapping(RequestPathConst.M02_01)
+    public String createUser() {
+        return ScreenPathConst.M02_01_SCREEN;
+    }
+
+    @GetMapping(RequestPathConst.M02_02)
+    public String detailUser() {
+        return ScreenPathConst.M02_02_SCREEN;
     }
 }

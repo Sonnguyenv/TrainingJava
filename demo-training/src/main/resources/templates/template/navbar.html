@@ -11,7 +11,7 @@
                         <span class="d-none d-md-inline-block">[[${session.userSession.username}]]</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
-                        <a class="dropdown-item" href="#">パスワード再設定</a>
+                        <a class="dropdown-item" th:href="@{/M/M03}">パスワード再設定</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" th:href="@{/M/M01/logout}">ログアウト</a>
                     </div>

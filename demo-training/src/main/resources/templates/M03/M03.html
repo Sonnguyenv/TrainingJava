@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template/baseManage.html}">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Xây dựng chức năng thay đổi mật khẩu</title>
+    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/icon.css" />
+    <link rel="stylesheet" href="css/shards-dashboards.1.1.0.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="h-100">
+<div class="container-fluid" layout:fragment="main-content">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:insert="template/sidebar.html"/>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 info-right">
+            <div class="main-navbar sticky-top bg-white">
+                <!-- Main Navbar -->
+                <div th:insert="template/navbar.html"/>
+            </div>
+            <!-- / .main-navbar -->
+            <div class="main-content-container container-fluid px-4">
+                <div class="page-header row no-gutters py-4">
+                    <div class="text-center w-100 mb-0">
+                        <h3 class="page-title">パスワード変更</h3>
+                    </div>
+                </div>
+                <!--header -->
+                <div class="list-form-info">
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-3 col-form-label">現在パスワード</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-3 col-form-label">新パスワード</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-3 col-form-label">新パスワード確認</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                    </div>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <a class="btn btn-primary btn-120 fz-16" role="button" aria-pressed="true" data-toggle="modal" data-target="#M03">変更</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="M03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-370" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                パスワードを変更してよろしでしょうか?
+            </div>
+            <div class="modal-footer justify-content-center border-top-0 bs-example">
+                <a type="button" class="btn btn-primary btn-80 mr-4">はい</a>
+                <a type="button" class="btn btn-secondary btn-80" data-dismiss="modal">いいえ</a>
+            </div>
+        </div>
+    </div>
+    <!-- alerts thông báo thành công -->
+    <!-- <div class="alert alert-success" role="alert">
+        パスワードを変更に成功しました。
+    </div> -->
+    <script src="scripts/font-icon.js"></script>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template/baseManage.html}">
+<div class="container-fluid" layout:fragment="main-content">
+    <div class="row">
+        <!-- Main Sidebar -->
+        <div th:insert="template/sidebar.html"/>
+        <!-- End Main Sidebar -->
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 info-right">
+            <div class="main-navbar sticky-top bg-white">
+                <!-- Main Navbar -->
+                <div th:insert="template/navbar.html"/>
+            </div>
+            <!-- / .main-navbar -->
+            <div class="main-content-container container-fluid px-4">
+                <div class="page-header row no-gutters py-4">
+                    <a href="M02" type="button" class="btn btn-outline-primary"><i class="fas fa-chevron-left" aria-hidden="true"></i></a>
+                    <div class="text-center w-100 mb-0 mt-30">
+                        <h3 class="page-title">ユーザー追加</h3>
+                    </div>
+                </div>
+                <!--header -->
+                <div class="list-form-info">
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">氏名</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-ctrl"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">ログインID</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-ctrl"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">パスワード</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-ctrl"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">メール</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control form-ctrl"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">権限</label>
+                                    <div class="col-md-9">
+                                        <select class="selectpicker form-control" title="&nbsp;">
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <a class="btn btn-primary btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02_01">追加</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="scripts/font-icon.js"></script>
+<script src="scripts/jquery-3.3.1.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/Chart.min.js"></script>
+<script src="scripts/bootstrap-select.min.js"></script>
+<script src="scripts/shards-dashboards.1.1.0.min.js"></script>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="M02_01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-370" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                この情報を追加してよろしでしょうか?
+            </div>
+            <div class="modal-footer justify-content-center border-top-0">
+                <a type="button" class="btn btn-primary btn-80 mr-4" href="M02.html">はい</a>
+                <a type="button" class="btn btn-secondary btn-80" data-dismiss="modal">いいえ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
