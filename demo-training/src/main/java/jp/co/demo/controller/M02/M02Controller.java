@@ -6,6 +6,8 @@ import jp.co.demo.entity.Account;
 import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.math.raw.Mod;
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +33,21 @@ public class M02Controller {
     }
 
     @GetMapping(RequestPathConst.M02_02)
-    public String detailUser() {
+    public String detailUser(Model model) {
+        model.addAttribute("account", new Account());
         return ScreenPathConst.M02_02_SCREEN;
     }
 
     @PostMapping(RequestPathConst.M02_01)
-    public String addUser(@ModelAttribute Account account) {
-        accountService.postUser(account);
-        return "succes";
+    public String addUser(@ModelAttribute Account account, Model model) {
+        model.addAttribute("account", account);
+        accountService.createUser(account);
+        return ScreenPathConst.M02_SCREEN;
+    }
+
+    @PutMapping(path = {RequestPathConst.M02_01, RequestPathConst.EDIT})
+    public String editUser(@ModelAttribute Account account, Model model) {
+        model.addAttribute("account", account);
+        return ScreenPathConst.M02_SCREEN;
     }
 }

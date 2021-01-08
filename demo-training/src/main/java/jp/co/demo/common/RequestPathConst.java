@@ -12,6 +12,10 @@ public class RequestPathConst {
     // Error page
     public static final String PAGE_ERROR = "/error";
 
+    public static final String EDIT = "/edit";
+
+    public static final String DELETE = "/delete";
+
     // ------------------------------------------------------------------------
     // LIST PATH MANAGE
     // ------------------------------------------------------------------------

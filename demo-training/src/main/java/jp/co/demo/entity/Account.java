@@ -43,7 +43,7 @@ public class Account extends BaseEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private AccountStatus accountStatus;
+    private AccountStatus accountStatus = AccountStatus.PROVISIONAL;
 
     @NotNull
     @Column(length = 20)

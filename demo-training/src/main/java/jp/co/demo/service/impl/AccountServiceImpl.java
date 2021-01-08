@@ -25,11 +25,12 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findByLoginId(loginId);
     }
 
-    public void putUser(Account account) {
+    public void updateUser(Account account) {
+        accountRepository.findByLoginId(account.getLoginId());
         accountRepository.save(account);
     }
 
-    public void postUser(Account account) {
+    public void createUser(Account account) {
         accountRepository.save(account);
     }
 
