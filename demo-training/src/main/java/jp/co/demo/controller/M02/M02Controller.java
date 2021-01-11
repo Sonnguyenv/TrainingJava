@@ -22,7 +22,8 @@ public class M02Controller {
     }
 
     @GetMapping(RequestPathConst.M02)
-    public String listUser() {
+    public String listUser(Account account, Model model) {
+        model.addAttribute("accounts", accountService.getAll());
         return ScreenPathConst.M02_SCREEN;
     }
 
@@ -42,12 +43,6 @@ public class M02Controller {
     public String addUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
         accountService.createUser(account);
-        return ScreenPathConst.M02_SCREEN;
-    }
-
-    @PutMapping(path = {RequestPathConst.M02_01, RequestPathConst.EDIT})
-    public String editUser(@ModelAttribute Account account, Model model) {
-        model.addAttribute("account", account);
         return ScreenPathConst.M02_SCREEN;
     }
 }

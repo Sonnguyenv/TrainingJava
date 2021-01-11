@@ -22,14 +22,15 @@
                 <div class="list-form">
                     <div class="row">
                         <div class="col">
-                            <form>
+                            <form th:href="@{/M/M02}" th:object="${account}">
                                 <div class="form-row justify-content-center">
                                     <div class="form-group col-md-8 col-lg-6">
                                         <label for="">氏名</label>
-                                        <input type="text" class="form-control" id="" placeholder="" value="">
+                                        <input type="text" th:field="*{loginId}" class="form-control" id=""
+                                               placeholder="" value="">
                                     </div>
-                                    <div class="form-group col-md-3 col-lg-2">
-                                        <label for="">&emsp;</label>
+                                    <div class="form-group col-md-4 col-lg-2">
+                                        <label for=""></label>
                                         <button type="submit" class="btn btn-accent w-100">検索</button>
                                     </div>
                                 </div>
@@ -37,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-log">
+                <div th:action="@{/M/M02}" th:object="${account}" method="get" class="table-log">
                     <div class="nav d-flex justify-content-end">
                         <a class="" th:href="@{/M/M02_01}"><i class="fas fa-plus-circle mr-1" aria-hidden="true"></i>ユーザー追加</a>
                     </div>
@@ -54,29 +55,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
+                                    <tr th:each="account : ${accounts}">
+                                        <td th:text="${account.id}"></td>
                                         <td><a th:href="@{/M/M02_02}" class="link-text">佐々木　華子</a></td>
-                                        <td>Hai123</td>
-                                        <td>abc@ominext.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><a th:href="@{/M/M02_02}" class="link-text">佐々木　華子</a></td>
-                                        <td>Hai123</td>
-                                        <td>abc@ominext.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><a th:href="@{/M/M02_02}" class="link-text">佐々木　華子</a></td>
-                                        <td>Hai123</td>
-                                        <td>abc@ominext.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td><a th:href="@{/M/M02_02}" class="link-text">佐々木　華子</a></td>
-                                        <td>Hai123</td>
-                                        <td>abc@ominext.com</td>
+                                        <td th:text="${account.loginId}"></td>
+                                        <td th:text="${account.mailAddress}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
