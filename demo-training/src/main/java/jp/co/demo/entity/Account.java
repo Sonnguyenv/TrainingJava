@@ -35,6 +35,9 @@ public class Account extends BaseEntity {
     private String loginId;
 
     @NotNull
+    private String fullName;
+
+    @NotNull
     private String password;
 
     @Column(length = 100)

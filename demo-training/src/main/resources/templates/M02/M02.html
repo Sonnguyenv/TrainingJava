@@ -57,7 +57,7 @@
                                     <tbody>
                                     <tr th:each="account : ${accounts}">
                                         <td th:text="${account.id}"></td>
-                                        <td><a th:href="@{/M/M02_02}" class="link-text">佐々木　華子</a></td>
+                                        <td><a th:text="${account.fullName}" th:href="@{/M/M02_02(loginId=${account.loginId})}" class="link-text"></a></td>
                                         <td th:text="${account.loginId}"></td>
                                         <td th:text="${account.mailAddress}"></td>
                                     </tr>

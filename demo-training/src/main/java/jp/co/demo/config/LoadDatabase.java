@@ -17,7 +17,9 @@ public class LoadDatabase {
 
     private static final String USER_NAME = "admin";
     private static final String PASSWORD = "$2a$10$eFMTFaCvgs2GnIsFprfwKeOEY/v/6cPh.EwtBVKEQqtfNEJx8/4HK";
+    private static final String FULL_NAME = "admin";
 
+    private static final String MAIL_ADDRESS = "sonnv@ominext.com";
     @Bean
     public CommandLineRunner initDatabase(AccountRepository accountRepository,
                                           ErrorCodeRepository errorCodeRepository) {
@@ -35,7 +37,8 @@ public class LoadDatabase {
             account.setAuthorities(Authorities.ROLE_ADMIN.name());
             account.setLoginId(USER_NAME);
             account.setPassword(PASSWORD);
-            account.setMailAddress("haivv@ominext.com");
+            account.setFullName(FULL_NAME);
+            account.setMailAddress(MAIL_ADDRESS);
             accountRepository.save(account);
         }
     }

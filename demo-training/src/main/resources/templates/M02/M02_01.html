@@ -27,7 +27,10 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">氏名</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control form-ctrl" autofocus/>
+                                        <input type="text" th:field="*{fullName}" class="form-control form-ctrl" required name="fullName" value="" autofocus/>
+                                        <div class="invalid-feedback">
+                                            氏名を入力してください。
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -61,9 +64,11 @@
                                     <label class="col-md-3 col-form-label">権限</label>
                                     <div class="col-md-9">
                                         <select th:field="*{authorities}" class="selectpicker form-control" title="&nbsp;">
-                                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                                            <option value="ROLE_MANAGE">ROLE_MANAGE</option>
-                                            <option value="ROLE_USER">ROLE_USER</option>
+                                            <option th:each="authority : ${T(jp.co.demo.enums.Authorities).values()}"
+                                                    th:value="${authority}"
+                                                    th:text="${authority}">
+                                            </option>
+
                                         </select>
                                     </div>
                                 </div>

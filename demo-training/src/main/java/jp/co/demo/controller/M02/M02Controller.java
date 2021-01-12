@@ -1,5 +1,6 @@
 package jp.co.demo.controller.M02;
 
+import jp.co.demo.common.BaseConst;
 import jp.co.demo.common.RequestPathConst;
 import jp.co.demo.common.ScreenPathConst;
 import jp.co.demo.entity.Account;
@@ -34,8 +35,9 @@ public class M02Controller {
     }
 
     @GetMapping(RequestPathConst.M02_02)
-    public String detailUser(Model model) {
-        model.addAttribute("account", new Account());
+    public String detailUser(@RequestParam(value="loginId") String loginId, Model model) {
+        Account account = accountService.findByLoginId(loginId);
+        model.addAttribute("account", account);
         return ScreenPathConst.M02_02_SCREEN;
     }
 
@@ -43,6 +45,13 @@ public class M02Controller {
     public String addUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
         accountService.createUser(account);
-        return ScreenPathConst.M02_SCREEN;
+        return BaseConst.REDIRECT + RequestPathConst.M02;
+    }
+
+    @PostMapping(RequestPathConst.M02_02)
+    public String editUser(@ModelAttribute Account account, Model model) {
+        model.addAttribute("account", account);
+        accountService.updateUser(account);
+        return BaseConst.REDIRECT + RequestPathConst.M02;
     }
 }

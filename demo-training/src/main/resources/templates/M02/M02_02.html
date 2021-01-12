@@ -23,47 +23,50 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form name= "edit" th:action="@{/M/M02_01}" th:method="put" th:object="${account}">
-                                <input type="hidden" th:value="*{loginId}" th:field="*{loginId}">
+                            <form name= "detailUser" th:object="${account}" th:action="@{/M/M02_02}" th:method="PUT">
+                                <input type="hidden">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">氏名</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control form-ctrl" value="ザー名" autofocus/>
+                                        <input type="text" th:value="${fullName}" th:field="*{fullName}" class="form-control form-ctrl" autofocus/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">ログインID</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" value=""/>
+                                        <input type="text" th:value="${loginId}" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" value="" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">パスワード</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{password}" class="form-control form-ctrl" id="password" value=""/>
+                                        <input type="text" th:value="${password}" th:field="*{password}" class="form-control form-ctrl" id="password" value=""/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">メール</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{mailAddress}" class="form-control form-ctrl" id="mailAddress" value=""/>
+                                        <input type="text" th:value="${mailAddress}" th:field="*{mailAddress}" class="form-control form-ctrl" id="mailAddress" value=""/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">権限</label>
                                     <div class="col-md-9">
-                                        <select th:field="*{authorities}" class="selectpicker form-control" title="&nbsp;">
-                                            <option value="Admin">Admin</option>
-                                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                                            <option value="ROLE_MANAGE">ROLE_MANAGE</option>
-                                            <option value="ROLE_USER">ROLE_USER</option>
+                                        <select th:value="${authorities}" th:field="*{authorities}" class="selectpicker form-control" title="&nbsp;">
+                                            <option th:each="authority : ${T(jp.co.demo.enums.Authorities).values()}"
+                                                    th:value="${authority}"
+                                                    th:text="${authority}"
+                                                    th:selected="${authority.name() == account.authorities}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="text-center mt-4">
-                                    <button type="submit" th:action="@{/M/M02_01}" th:method="put" class="btn btn-primary btn-120 mr-4" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02_02">編集</button>
-                                    <button type="submit" th:action="@{/M/M02_01}" th:method="delete" class="btn btn-danger btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02_02_01">削除</button>
-                                </div>
+                                <form>
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-primary btn-120 mr-4" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">編集</button>
+                                        <button class="btn btn-danger btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">削除</button>
+                                    </div>
+                                </form>
                             </form>
                         </div>
                     </div>
