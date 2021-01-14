@@ -4,14 +4,15 @@ import jp.co.demo.common.BaseConst;
 import jp.co.demo.common.RequestPathConst;
 import jp.co.demo.common.ScreenPathConst;
 import jp.co.demo.entity.Account;
-import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.math.raw.Mod;
-import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Array;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -24,7 +25,7 @@ public class M02Controller {
 
     @GetMapping(RequestPathConst.M02)
     public String listUser(Account account, Model model) {
-        model.addAttribute("accounts", accountService.getAll());
+        model.addAttribute("accounts", accountService.getUser(account));
         return ScreenPathConst.M02_SCREEN;
     }
 
@@ -48,10 +49,17 @@ public class M02Controller {
         return BaseConst.REDIRECT + RequestPathConst.M02;
     }
 
-    @PostMapping(RequestPathConst.M02_02)
-    public String editUser(@ModelAttribute Account account, Model model) {
+    @PostMapping(path= {RequestPathConst.M02_02}, params = "Edit")
+    public String updateUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
         accountService.updateUser(account);
+        return BaseConst.REDIRECT + RequestPathConst.M02;
+    }
+
+    @PostMapping(path= {RequestPathConst.M02_02}, params = "Delete")
+    public String deleteUser(@ModelAttribute Account account, Model model) {
+        model.addAttribute("account", account);
+        accountService.deleteUser(account);
         return BaseConst.REDIRECT + RequestPathConst.M02;
     }
 }

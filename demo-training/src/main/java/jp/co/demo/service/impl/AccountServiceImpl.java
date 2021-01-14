@@ -27,28 +27,27 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public List<Account> getUser(Account account) {
-        if (account.getLoginId() != "" || account.getLoginId() != null) {
-            List<Account> accounts = new ArrayList<>();
-            accounts.add(accountRepository.findByLoginId(account.getLoginId()));
-            return accounts;
+        if (account.getFullName() != null && account.getFullName() != "") {
+            return accountRepository.findByFullName(account.getFullName());
+        } else {
+            return accountRepository.findAll();
         }
-        return accountRepository.findAll();
     }
 
     public List<Account> getAll() {
         return accountRepository.findAll();
     }
 
-    public void updateUser(Account account) {
-        accountRepository.findByLoginId(account.getLoginId());
-        accountRepository.save(account);
-    }
-
     public void createUser(Account account) {
         accountRepository.save(account);
     }
 
-    public void deleteUser(Account account)  {
+    public void updateUser(Account account) {
+        accountRepository.findById(account.getId());
+        accountRepository.save(account);
+    }
+
+    public void deleteUser(Account account) {
         accountRepository.delete(account);
     }
 }

@@ -23,8 +23,8 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form name= "detailUser" th:object="${account}" th:action="@{/M/M02_02}" th:method="PUT">
-                                <input type="hidden">
+                            <form name= "detailUser" method="post" th:action="@{/M/M02_02}" th:object="${account}">
+                                <input type="hidden" th:field="*{id}"/>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">氏名</label>
                                     <div class="col-md-9">
@@ -56,15 +56,15 @@
                                             <option th:each="authority : ${T(jp.co.demo.enums.Authorities).values()}"
                                                     th:value="${authority}"
                                                     th:text="${authority}"
-                                                    th:selected="${authority.name() == account.authorities}">
+                                                    th:selected="${authority.name() == authorities}">
                                             </option>
                                         </select>
                                     </div>
                                 </div>
                                 <form>
                                     <div class="text-center mt-4">
-                                        <button class="btn btn-primary btn-120 mr-4" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">編集</button>
-                                        <button class="btn btn-danger btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">削除</button>
+                                        <button type="submit" name="Edit" value="Edit" class="btn btn-primary btn-120 mr-4"  role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">編集</button>
+                                        <button type="submit" name="Delete" value="Delete" class="btn btn-danger btn-120"  role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">削除</button>
                                     </div>
                                 </form>
                             </form>

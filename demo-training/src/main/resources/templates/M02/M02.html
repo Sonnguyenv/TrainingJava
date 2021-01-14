@@ -22,11 +22,11 @@
                 <div class="list-form">
                     <div class="row">
                         <div class="col">
-                            <form th:href="@{/M/M02}" th:object="${account}">
+                            <form th:action="@{/M/M02}" th:object="${account}" method="get">
                                 <div class="form-row justify-content-center">
                                     <div class="form-group col-md-8 col-lg-6">
                                         <label for="">氏名</label>
-                                        <input type="text" th:field="*{loginId}" class="form-control" id=""
+                                        <input type="text" th:field="*{fullName}" class="form-control" id=""
                                                placeholder="" value="">
                                     </div>
                                     <div class="form-group col-md-4 col-lg-2">
@@ -55,11 +55,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="account : ${accounts}">
-                                        <td th:text="${account.id}"></td>
-                                        <td><a th:text="${account.fullName}" th:href="@{/M/M02_02(loginId=${account.loginId})}" class="link-text"></a></td>
+                                    <tr th:unless="${accounts.empty}" th:each="account,indexPath : ${accounts}">
+                                        <td th:text="${indexPath.index}"></td>
+                                        <td><a th:text="${account.fullName}"
+                                               th:href="@{/M/M02_02(loginId=${account.loginId})}"
+                                               class="link-text"></a></td>
                                         <td th:text="${account.loginId}"></td>
                                         <td th:text="${account.mailAddress}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td> No Data </td>
                                     </tr>
                                     </tbody>
                                 </table>

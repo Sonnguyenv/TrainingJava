@@ -28,7 +28,7 @@ import java.util.List;
 public class Account extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "account_seq")
     private Long id;
 
     @Column(unique = true, length = 20)
