@@ -23,7 +23,20 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form name= "postuser" th:action="@{/M/M02_01}" th:object="${account}" th:method="post">
+                            <form name= "Create User" th:action="@{/M/M02_01}" th:object="${account}" th:method="post">
+                                <div class="form-group row" th:if="${account.id != null}">
+                                    <div class="col-sm-3">&#8203;</div>
+                                    <div class="col-sm-9">
+                                        <div class="alert alert-danger">
+                                            IDはすでに存在します 。
+                                        </div>
+                                        <script type="text/javascript" onclick="function()">
+                                            $(document).ready(function () {
+                                                $("#loginId").focus();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">氏名</label>
                                     <div class="col-md-9">
@@ -36,7 +49,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">ログインID</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" required name="loginId" value="" autofocus/>
+                                        <input type="text" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" required name="loginId" value=""/>
                                         <div class="invalid-feedback">
                                             ユーザーIDを入力してください。
                                         </div>
@@ -45,7 +58,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">パスワード</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{password}" class="form-control form-ctrl" id="password" required name="password" value="" autofocus/>
+                                        <input type="text" th:field="*{password}" class="form-control form-ctrl" id="password" required name="password" value=""/>
                                         <div class="invalid-feedback">
                                             パスワードを入力してください。
                                         </div>
@@ -54,7 +67,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">メール</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:field="*{mailAddress}" class="form-control form-ctrl" id="mailAddress" required name="mailAddress" value="" autofocus/>
+                                        <input type="text" th:field="*{mailAddress}" class="form-control form-ctrl" id="mailAddress" required name="mailAddress" value=""/>
                                         <div class="invalid-feedback">
                                             メールを入力してください。
                                         </div>
@@ -68,12 +81,11 @@
                                                     th:value="${authority}"
                                                     th:text="${authority}">
                                             </option>
-
                                         </select>
                                     </div>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02_01">追加</button>
+                                    <button type="submit" class="btn btn-primary btn-120" role="button" aria-pressed="true" data-toggle="modal" data-target="#M02">追加</button>
                                 </div>
                             </form>
                         </div>

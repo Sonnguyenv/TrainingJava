@@ -63,8 +63,10 @@
                                         <td th:text="${account.loginId}"></td>
                                         <td th:text="${account.mailAddress}"></td>
                                     </tr>
+                                    </tbody>
+                                    <tbody th:if="${accounts.empty}">
                                     <tr>
-                                        <td> No Data </td>
+                                        <td class="text-center">No data available in table</td>
                                     </tr>
                                     </tbody>
                                 </table>

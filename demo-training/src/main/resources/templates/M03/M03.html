@@ -37,27 +37,27 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form>
+                            <form name= "Change Password" th:action="@{/M/M02_01}" th:object="${account}" th:method="post">
                                 <div class="form-group row">
-                                    <label for="inputPassword" class="col-sm-3 col-form-label">現在パスワード</label>
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">現在パスワード</label>
                                     <div class="col-sm-9">
                                         <input type="password" class="form-control form-ctrl" id="inputPassword3" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputPassword" class="col-sm-3 col-form-label">新パスワード</label>
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">新パスワード</label>
                                     <div class="col-sm-9">
                                         <input type="password" class="form-control form-ctrl" id="inputPassword3" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputPassword" class="col-sm-3 col-form-label">新パスワード確認</label>
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">新パスワード確認</label>
                                     <div class="col-sm-9">
                                         <input type="password" class="form-control form-ctrl" id="inputPassword3" />
                                     </div>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <a class="btn btn-primary btn-120 fz-16" role="button" aria-pressed="true" data-toggle="modal" data-target="#M03">変更</a>
+                                    <button type="submit" class="btn btn-primary btn-120 fz-16" role="button" aria-pressed="true" data-toggle="modal" data-target="#M03">変更</button>
                                 </div>
                             </form>
                         </div>

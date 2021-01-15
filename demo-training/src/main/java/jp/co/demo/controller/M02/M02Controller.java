@@ -23,9 +23,10 @@ public class M02Controller {
         this.accountService = accountService;
     }
 
-    @GetMapping(RequestPathConst.M02)
+    // List User
+    @GetMapping(path ={RequestPathConst.M02})
     public String listUser(Account account, Model model) {
-        model.addAttribute("accounts", accountService.getUser(account));
+        model.addAttribute("accounts", accountService.getUser(account, 0, 10));
         return ScreenPathConst.M02_SCREEN;
     }
 
@@ -42,13 +43,21 @@ public class M02Controller {
         return ScreenPathConst.M02_02_SCREEN;
     }
 
+    // Create User
     @PostMapping(RequestPathConst.M02_01)
     public String addUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
-        accountService.createUser(account);
-        return BaseConst.REDIRECT + RequestPathConst.M02;
+        Account account1 = accountService.findByLoginId(account.getLoginId());
+        if (account1 != null) {
+            model.addAttribute("account", account1);
+            return ScreenPathConst.M02_01_SCREEN;
+        } else {
+            accountService.createUser(account);
+            return BaseConst.REDIRECT + RequestPathConst.M02;
+        }
     }
 
+    // Edit User
     @PostMapping(path= {RequestPathConst.M02_02}, params = "Edit")
     public String updateUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
@@ -56,6 +65,7 @@ public class M02Controller {
         return BaseConst.REDIRECT + RequestPathConst.M02;
     }
 
+    // Delete User
     @PostMapping(path= {RequestPathConst.M02_02}, params = "Delete")
     public String deleteUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);

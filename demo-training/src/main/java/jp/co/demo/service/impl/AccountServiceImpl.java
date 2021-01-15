@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * AccountServiceImpl
@@ -26,16 +29,14 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findByLoginId(loginId);
     }
 
-    public List<Account> getUser(Account account) {
+    public List<Account> getUser(Account account, int pageNo, int pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
         if (account.getFullName() != null && account.getFullName() != "") {
             return accountRepository.findByFullName(account.getFullName());
         } else {
-            return accountRepository.findAll();
+            Page<Account> pagedResult = accountRepository.findAll(paging);
+            return pagedResult.getContent();
         }
-    }
-
-    public List<Account> getAll() {
-        return accountRepository.findAll();
     }
 
     public void createUser(Account account) {
