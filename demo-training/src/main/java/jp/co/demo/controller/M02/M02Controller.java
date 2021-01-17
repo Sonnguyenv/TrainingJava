@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Array;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -26,7 +24,8 @@ public class M02Controller {
     // List User
     @GetMapping(path ={RequestPathConst.M02})
     public String listUser(Account account, Model model) {
-        model.addAttribute("accounts", accountService.getUser(account, 0, 10));
+        List<Account> accounts = accountService.getUser(account, 0, 10);
+        model.addAttribute("accounts", accounts);
         return ScreenPathConst.M02_SCREEN;
     }
 
@@ -47,9 +46,9 @@ public class M02Controller {
     @PostMapping(RequestPathConst.M02_01)
     public String addUser(@ModelAttribute Account account, Model model) {
         model.addAttribute("account", account);
-        Account account1 = accountService.findByLoginId(account.getLoginId());
-        if (account1 != null) {
-            model.addAttribute("account", account1);
+        Account oldAccount = accountService.findByLoginId(account.getLoginId());
+        if (oldAccount != null) {
+            model.addAttribute("account", oldAccount);
             return ScreenPathConst.M02_01_SCREEN;
         } else {
             accountService.createUser(account);
