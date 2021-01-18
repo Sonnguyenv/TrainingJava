@@ -6,6 +6,7 @@ import jp.co.demo.common.ScreenPathConst;
 import jp.co.demo.entity.Account;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +24,11 @@ public class M02Controller {
 
     // List User
     @GetMapping(path ={RequestPathConst.M02})
-    public String listUser(Account account, Model model) {
-        List<Account> accounts = accountService.getUser(account, 0, 10);
-        model.addAttribute("accounts", accounts);
+    public String listUser(Account account, Model model, @RequestParam(value = "pageNo") int pageNo) {
+//        List<Account> accounts = accountService.getUser(account, 0, 10);
+        Page<Account> page = accountService.findPaginated(pageNo, 10);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("accounts", page.getContent());
         return ScreenPathConst.M02_SCREEN;
     }
 

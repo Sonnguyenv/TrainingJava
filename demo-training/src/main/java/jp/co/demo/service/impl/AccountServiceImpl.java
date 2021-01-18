@@ -4,6 +4,7 @@ import jp.co.demo.entity.Account;
 import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,10 @@ public class AccountServiceImpl implements AccountService {
 
     public void deleteUser(Account account) {
         accountRepository.delete(account);
+    }
+
+    public Page<Account> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.accountRepository.findAll(pageable);
     }
 }

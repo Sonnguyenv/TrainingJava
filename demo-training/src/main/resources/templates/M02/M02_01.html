@@ -4,12 +4,12 @@
 <div class="container-fluid" layout:fragment="main-content">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:insert="template/sidebar.html"/>
+        <div th:insert="template/sidebar"/>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 info-right">
             <div class="main-navbar sticky-top bg-white">
                 <!-- Main Navbar -->
-                <div th:insert="template/navbar.html"/>
+                <div th:insert="template/navbar"/>
             </div>
             <!-- / .main-navbar -->
             <div class="main-content-container container-fluid px-4">
@@ -30,7 +30,7 @@
                                         <div class="alert alert-danger">
                                             IDはすでに存在します 。
                                         </div>
-                                        <script type="text/javascript" onclick="function()">
+                                        <script type="text/javascript">
                                             $(document).ready(function () {
                                                 $("#loginId").focus();
                                             });

@@ -4,12 +4,12 @@
 <div class="container-fluid" layout:fragment="main-content">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:insert="template/sidebar.html"/>
+        <div th:insert="template/sidebar"/>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 info-right">
             <div class="main-navbar sticky-top bg-white">
                 <!-- Main Navbar -->
-                <div th:insert="template/navbar.html"/>
+                <div th:insert="template/navbar"/>
             </div>
             <!-- / .main-navbar -->
             <div class="main-content-container container-fluid px-4">
@@ -25,6 +25,7 @@
                         <div class="col">
                             <form name= "detailUser" method="post" th:action="@{/M/M02_02}" th:object="${account}">
                                 <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{loginId}"/>
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">氏名</label>
                                     <div class="col-md-9">
@@ -34,7 +35,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">ログインID</label>
                                     <div class="col-md-9">
-                                        <input type="text" th:value="${loginId}" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" value="" />
+                                        <input type="text" th:value="${loginId}" th:field="*{loginId}" class="form-control form-ctrl" id="loginId" value="" disabled/>
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -4,12 +4,12 @@
 <div class="container-fluid" layout:fragment="main-content">
     <div class="row">
         <!-- Main Sidebar -->
-        <div th:insert="template/sidebar.html"/>
+        <div th:insert="template/sidebar"/>
         <!-- End Main Sidebar -->
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 info-right">
             <div class="main-navbar sticky-top bg-white">
                 <!-- Main Navbar -->
-                <div th:insert="template/navbar.html"/>
+                <div th:insert="template/navbar"/>
             </div>
             <!-- / .main-navbar -->
             <div class="main-content-container container-fluid px-4">
@@ -30,8 +30,7 @@
                                                placeholder="" value="">
                                     </div>
                                     <div class="form-group col-md-4 col-lg-2">
-                                        <label for=""></label>
-                                        <button type="submit" class="btn btn-accent w-100">検索</button>
+                                        <button type="submit" class="btn btn-accent w-100" style="position:absolute; bottom:1px">検索</button>
                                     </div>
                                 </div>
                             </form>
@@ -64,12 +63,10 @@
                                         <td th:text="${account.mailAddress}"></td>
                                     </tr>
                                     </tbody>
-                                    <tbody th:if="${accounts.empty}">
-                                    <tr>
-                                        <td class="text-center">No data available in table</td>
-                                    </tr>
-                                    </tbody>
                                 </table>
+                                <div th:if="${accounts.empty}">
+                                    <span class="text-center" style="line-height: 40px">テーブルにデータがありません</span>
+                                </div>
                             </div>
                         </div>
                     </div>
