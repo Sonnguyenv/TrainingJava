@@ -27,16 +27,6 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findByLoginId(loginId);
     }
 
-//    public List<Account> getUser(Account account, int pageNo, int pageSize) {
-//        Pageable paging = PageRequest.of(pageNo, pageSize);
-//        if (account.getFullName() != null && account.getFullName() != "") {
-//            return accountRepository.findAllByNameContaining(account.getFullName(), paging);
-//        } else {
-//            Page<Account> pagedResult = accountRepository.findAll(paging);
-//            return pagedResult.getContent();
-//        }
-//    }
-
     public void createUser(Account account) {
         accountRepository.save(account);
     }

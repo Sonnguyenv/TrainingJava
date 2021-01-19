@@ -3,25 +3,19 @@ package jp.co.demo.controller.M02;
 import jp.co.demo.common.BaseConst;
 import jp.co.demo.common.RequestPathConst;
 import jp.co.demo.common.ScreenPathConst;
-import jp.co.demo.controller.BaseController;
 import jp.co.demo.entity.Account;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-
-import static jp.co.demo.common.ScreenPathConst.M02_SCREEN;
 
 @Controller
 @Slf4j
-public class M02Controller extends BaseController {
+public class M02Controller {
     // attribute account page
     protected static final String ACCOUNT = "account";
     // attribute listAccount page
@@ -30,6 +24,12 @@ public class M02Controller extends BaseController {
     protected static final String LOGIN_ID = "loginId";
     // attribute PageNo page
     protected static final String PAGE_NO = "pageNo";
+    // attribute CurrentPage page
+    protected static final String CURRENT_PAGE = "currentPage";
+    // attribute TotalPages page
+    protected static final String TOTAL_PAGES = "totalPages";
+    // attribute TotalItems page
+    protected static final String TOTAL_ITEMS = "totalItems";
 
     protected static final String EDIT = "Edit";
     protected static final String DELETE = "Delete";
@@ -96,9 +96,9 @@ public class M02Controller extends BaseController {
         Page<Account> page = accountService.findPaginated(pageNo, pageSize, account);
         List<Account> accounts = page.getContent();
 
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", page.getTotalPages());
-        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute(CURRENT_PAGE, pageNo);
+        model.addAttribute(TOTAL_PAGES, page.getTotalPages());
+        model.addAttribute(TOTAL_ITEMS, page.getTotalElements());
 
         model.addAttribute(ACCOUNT, account);
         model.addAttribute(ACCOUNTS, accounts);
