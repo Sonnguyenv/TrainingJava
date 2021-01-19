@@ -1,6 +1,7 @@
 package jp.co.demo.service;
 
 import jp.co.demo.entity.Account;
+import org.springframework.data.domain.Page;
 
 /**
  * AccountService
@@ -14,4 +15,5 @@ public interface AccountService {
      * @return {@link Account}
      */
     Account findByLoginId(String loginId);
+    Page<Account> findPaginated(int pageNo, int pageSize, Account account);
 }

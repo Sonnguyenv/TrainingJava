@@ -4,16 +4,13 @@ import jp.co.demo.entity.Account;
 import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * AccountServiceImpl
@@ -30,15 +27,15 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findByLoginId(loginId);
     }
 
-    public List<Account> getUser(Account account, int pageNo, int pageSize) {
-        Pageable paging = PageRequest.of(pageNo, pageSize);
-        if (account.getFullName() != null && account.getFullName() != "") {
-            return accountRepository.findByFullName(account.getFullName());
-        } else {
-            Page<Account> pagedResult = accountRepository.findAll(paging);
-            return pagedResult.getContent();
-        }
-    }
+//    public List<Account> getUser(Account account, int pageNo, int pageSize) {
+//        Pageable paging = PageRequest.of(pageNo, pageSize);
+//        if (account.getFullName() != null && account.getFullName() != "") {
+//            return accountRepository.findAllByNameContaining(account.getFullName(), paging);
+//        } else {
+//            Page<Account> pagedResult = accountRepository.findAll(paging);
+//            return pagedResult.getContent();
+//        }
+//    }
 
     public void createUser(Account account) {
         accountRepository.save(account);
@@ -53,8 +50,14 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.delete(account);
     }
 
-    public Page<Account> findPaginated(int pageNo, int pageSize) {
+    @Override
+    public Page<Account> findPaginated(int pageNo, int pageSize, Account account) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-        return this.accountRepository.findAll(pageable);
+        if (account.getFullName() != null && account.getFullName() != "") {
+            return accountRepository.findAllByNameContaining(account.getFullName(), pageable);
+        } else {
+            Page<Account> pagedResult = accountRepository.findAll(pageable);
+            return pagedResult;
+        }
     }
 }

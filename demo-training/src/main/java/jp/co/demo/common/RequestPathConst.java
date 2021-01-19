@@ -29,7 +29,7 @@ public class RequestPathConst {
     public static final String M02 = "/M/M02";
     public static final String M02_01 = "/M/M02_01";
     public static final String M02_02 = "/M/M02_02";
-    public static final String M02_02_01 = "/M/M02_02_01";
+    public static final String M02_02_PAGE = "/M/M02/page/{pageNo}";
 
     // M03
     public static final String M03 = "/M/M03";
