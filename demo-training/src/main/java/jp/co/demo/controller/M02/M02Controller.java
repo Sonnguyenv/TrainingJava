@@ -23,13 +23,15 @@ public class M02Controller {
     // attribute LoginID page
     protected static final String LOGIN_ID = "loginId";
     // attribute PageNo page
-    protected static final String PAGE_NO = "pageNo";
+    protected static final String PAGE = "page";
     // attribute CurrentPage page
     protected static final String CURRENT_PAGE = "currentPage";
     // attribute TotalPages page
     protected static final String TOTAL_PAGES = "totalPages";
     // attribute TotalItems page
     protected static final String TOTAL_ITEMS = "totalItems";
+    // attribute DefaultI Page page
+    protected static final String DEFAULT_PAGE = "1";
 
     protected static final String EDIT = "Edit";
     protected static final String DELETE = "Delete";
@@ -42,8 +44,19 @@ public class M02Controller {
 
     // List User
     @GetMapping(RequestPathConst.M02)
-    public String listUser(Model model, Account account) {
-        return findPaginated(1, model, account);
+    public String listUser(Model model, Account account, @RequestParam(value = PAGE, defaultValue = DEFAULT_PAGE) int pageNo) {
+        int pageSize = 10;
+
+        Page<Account> page = accountService.findPaginated(pageNo, pageSize, account);
+        List<Account> accounts = page.getContent();
+
+        model.addAttribute(CURRENT_PAGE, pageNo);
+        model.addAttribute(TOTAL_PAGES, page.getTotalPages());
+        model.addAttribute(TOTAL_ITEMS, page.getTotalElements());
+
+        model.addAttribute(ACCOUNT, account);
+        model.addAttribute(ACCOUNTS, accounts);
+        return ScreenPathConst.M02_SCREEN;
     }
 
     @GetMapping(RequestPathConst.M02_01)
@@ -87,21 +100,5 @@ public class M02Controller {
         model.addAttribute(ACCOUNT, account);
         accountService.deleteUser(account);
         return BaseConst.REDIRECT + RequestPathConst.M02;
-    }
-
-    @GetMapping(RequestPathConst.M02_02_PAGE)
-    public String findPaginated(@PathVariable (value = PAGE_NO) int pageNo, Model model, Account account) {
-        int pageSize = 10;
-
-        Page<Account> page = accountService.findPaginated(pageNo, pageSize, account);
-        List<Account> accounts = page.getContent();
-
-        model.addAttribute(CURRENT_PAGE, pageNo);
-        model.addAttribute(TOTAL_PAGES, page.getTotalPages());
-        model.addAttribute(TOTAL_ITEMS, page.getTotalElements());
-
-        model.addAttribute(ACCOUNT, account);
-        model.addAttribute(ACCOUNTS, accounts);
-        return ScreenPathConst.M02_SCREEN;
     }
 }
