@@ -37,23 +37,23 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form name= "Change Password" th:action="@{/M/M02_01}" th:object="${account}" th:method="post">
+                            <form name= "Change Password" th:action="@{/M/M03}" th:object="${account}" th:method="post">
                                 <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label">現在パスワード</label>
+                                    <label for="oldPassword" class="col-sm-3 col-form-label">現在パスワード</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                        <input type="password" class="form-control form-ctrl" id="oldPassword" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label">新パスワード</label>
+                                    <label for="newPassword" class="col-sm-3 col-form-label">新パスワード</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                        <input type="password" class="form-control form-ctrl" id="newPassword" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label">新パスワード確認</label>
+                                    <label for="confirmPassword" class="col-sm-3 col-form-label">新パスワード確認</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="inputPassword3" />
+                                        <input type="password" class="form-control form-ctrl" id="confirmPassword" />
                                     </div>
                                 </div>
                                 <div class="text-center mt-4">

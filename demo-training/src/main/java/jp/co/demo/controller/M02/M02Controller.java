@@ -36,7 +36,7 @@ public class M02Controller {
     protected static final String EDIT = "Edit";
     protected static final String DELETE = "Delete";
 
-    private AccountServiceImpl accountService;
+    private final AccountServiceImpl accountService;
 
     public M02Controller(AccountServiceImpl accountService) {
         this.accountService = accountService;
@@ -75,7 +75,6 @@ public class M02Controller {
     // Create User
     @PostMapping(RequestPathConst.M02_01)
     public String addUser(@ModelAttribute Account account, Model model) {
-        model.addAttribute(ACCOUNT, account);
         Account oldAccount = accountService.findByLoginId(account.getLoginId());
         if (oldAccount != null) {
             model.addAttribute(ACCOUNT, oldAccount);
