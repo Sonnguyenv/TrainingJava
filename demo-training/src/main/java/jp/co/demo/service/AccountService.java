@@ -16,4 +16,5 @@ public interface AccountService {
      */
     Account findByLoginId(String loginId);
     Page<Account> findPaginated(int pageNo, int pageSize, Account account);
+    boolean checkIfValidOldPassword(Account account, String password);
 }

@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{template/baseManage.html}">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Xây dựng chức năng thay đổi mật khẩu</title>
-    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components." />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/all.css" />
-    <link rel="stylesheet" href="css/icon.css" />
-    <link rel="stylesheet" href="css/shards-dashboards.1.1.0.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-<body class="h-100">
+
 <div class="container-fluid" layout:fragment="main-content">
     <div class="row">
         <!-- Main Sidebar -->
@@ -38,26 +24,28 @@
                     <div class="row">
                         <div class="col">
                             <form name= "Change Password" th:action="@{/M/M03}" th:object="${account}" th:method="post">
+                                <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{loginId}"/>
                                 <div class="form-group row">
-                                    <label for="oldPassword" class="col-sm-3 col-form-label">現在パスワード</label>
+                                    <label for="old_password" class="col-sm-3 col-form-label">現在パスワード</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="oldPassword" />
+                                        <input  type="password" th:value="${password}" th:field="*{password}" class="form-control form-ctrl" id="old_password" required/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="newPassword" class="col-sm-3 col-form-label">新パスワード</label>
+                                    <label for="new_password" class="col-sm-3 col-form-label">新パスワード</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="newPassword" />
+                                        <input type="password" class="form-control form-ctrl" id="new_password" name="new_password" required/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="confirmPassword" class="col-sm-3 col-form-label">新パスワード確認</label>
+                                    <label for="confirm_password" class="col-sm-3 col-form-label">新パスワード確認</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="confirmPassword" />
+                                        <input type="password" th:field="*{confirm_password}" class="form-control form-ctrl" id="confirm_password" name="confirm_password" required/>
                                     </div>
                                 </div>
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary btn-120 fz-16" role="button" aria-pressed="true" data-toggle="modal" data-target="#M03">変更</button>
+                                <div class="text-center mt-4" id="change_password">
+                                    <button type="button" name="submit" id="submit" class="btn btn-primary btn-120 fz-16" role="button" aria-pressed="true" data-toggle="modal">変更</button>
                                 </div>
                             </form>
                         </div>
@@ -66,6 +54,7 @@
             </div>
         </main>
     </div>
+    <script th:src="@{/js/validation.js}"></script>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="M03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -80,14 +69,9 @@
             </div>
         </div>
     </div>
-    <!-- alerts thông báo thành công -->
-    <!-- <div class="alert alert-success" role="alert">
-        パスワードを変更に成功しました。
-    </div> -->
-    <script src="scripts/font-icon.js"></script>
-    <script src="scripts/jquery-3.3.1.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/Chart.min.js"></script>
-    <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
-</body>
+</div>
+<!-- alerts thông báo thành công -->
+<!-- <div class="alert alert-success" role="alert">
+    パスワードを変更に成功しました。
+</div> -->
 </html>

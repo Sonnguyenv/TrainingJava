@@ -54,4 +54,9 @@ public class AccountServiceImpl implements AccountService {
             return accountRepository.findAll(pageable);
         }
     }
+
+    @Override
+    public boolean checkIfValidOldPassword(final Account account, final String oldPassword) {
+        return passwordEncoder.matches(account.getPassword(), oldPassword);
+    }
 }

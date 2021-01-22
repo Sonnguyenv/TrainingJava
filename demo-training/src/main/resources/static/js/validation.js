@@ -60,4 +60,20 @@
         });
 
     }, false);
+
+
+    $("#submit").click(function() {
+        if ($("#new_password").val() == $("#old_password").val()) {
+            document.getElementsByName("submit")[0].type = "button";
+            alert("古いパスワードで複製する");
+            return;
+        }
+
+        if ($("#new_password").val() != $("#confirm_password").val()) {
+            document.getElementsByName("submit")[0].type = "button";
+            alert("合わない");
+            return;
+        }
+        document.getElementsByName("submit")[0].type = "submit";
+    });
 })();
