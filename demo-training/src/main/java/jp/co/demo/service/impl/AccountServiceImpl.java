@@ -4,8 +4,8 @@ import jp.co.demo.entity.Account;
 import jp.co.demo.model.UserModel;
 import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.AccountService;
-import org.apache.tomcat.util.buf.UDecoder;
 import org.springframework.data.domain.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +34,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public void createUser(Account account) {
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        String encoded = new BCryptPasswordEncoder().encode(account.getPassword());
+        account.setPassword(encoded);
         accountRepository.save(account);
     }
 
@@ -44,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.save(account);
     }
 
-    public void deleteUser(Account account) {
+        public void deleteUser(Account account) {
         accountRepository.delete(account);
     }
 

@@ -9,9 +9,12 @@ import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.buf.UDecoder;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -49,8 +52,13 @@ public class M02Controller {
     public String listUser(Model model, Account account, @RequestParam(value = PAGE, defaultValue = DEFAULT_PAGE) int pageNo) {
         int pageSize = 10;
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Account userLogin = accountService.findByLoginId(auth.getName());
+
         Page<Account> page = accountService.findPaginated(pageNo, pageSize, account);
-        List<Account> accounts = page.getContent();
+        List<Account> accounts = page.getContent().stream()
+                                                .filter(account1 -> !userLogin.equals(account1))
+                                                .collect(Collectors.toList());
 
         model.addAttribute(CURRENT_PAGE, pageNo);
         model.addAttribute(TOTAL_PAGES, page.getTotalPages());
