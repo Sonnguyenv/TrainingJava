@@ -23,25 +23,31 @@
                 <div class="list-form-info">
                     <div class="row">
                         <div class="col">
-                            <form name= "Change Password" th:action="@{/M/M03}" th:object="${account}" th:method="post">
-                                <input type="hidden" th:field="*{id}"/>
-                                <input type="hidden" th:field="*{loginId}"/>
+                            <form name= "Change Password" th:action="@{/M/M03}" th:object="${userModel}" th:method="post">
+                                <div class="form-group row" th:if="${error != null}">
+                                    <div class="col-sm-3">&#8203;</div>
+                                    <div class="col-sm-9">
+                                        <div class="alert alert-danger">
+                                            パスワードが間違っています 。
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label for="old_password" class="col-sm-3 col-form-label">現在パスワード</label>
                                     <div class="col-sm-9">
-                                        <input  type="password" th:value="${password}" th:field="*{password}" class="form-control form-ctrl" id="old_password" required/>
+                                        <input  type="text" th:field="*{password}" class="form-control form-ctrl" id="old_password" required/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="new_password" class="col-sm-3 col-form-label">新パスワード</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control form-ctrl" id="new_password" name="new_password" required/>
+                                        <input type="text" th:field="*{newPassword}" class="form-control form-ctrl" id="new_password" name="new_password" required/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="confirm_password" class="col-sm-3 col-form-label">新パスワード確認</label>
                                     <div class="col-sm-9">
-                                        <input type="password" th:field="*{confirm_password}" class="form-control form-ctrl" id="confirm_password" name="confirm_password" required/>
+                                        <input type="text" th:field="*{newPassword}" class="form-control form-ctrl" id="confirm_password" name="confirm_password" required/>
                                     </div>
                                 </div>
                                 <div class="text-center mt-4" id="change_password">

@@ -1,7 +1,9 @@
 package jp.co.demo.controller.M03;
 
+import jp.co.demo.common.BaseConst;
 import jp.co.demo.common.RequestPathConst;
 import jp.co.demo.common.ScreenPathConst;
+import jp.co.demo.model.UserModel;
 import jp.co.demo.entity.Account;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 public class M03Controller {
     // attribute account page
-    protected static final String ACCOUNT = "account";
-    // attribute Confirm Password
-    protected  static final String CONFIRM_PASSWORD = "confirm_password";
+    protected final String USER_MODEL = "userModel";
+
+    protected final String ERROR = "error";
 
     private final AccountServiceImpl accountService;
 
@@ -28,23 +30,25 @@ public class M03Controller {
     }
 
     @GetMapping(RequestPathConst.M03)
-    public String getScreen(Model model, @ModelAttribute Account account, String confirmPassword) {
-        model.addAttribute(ACCOUNT, account);
-        model.addAttribute(CONFIRM_PASSWORD, confirmPassword);
+    public String getScreen(Model model) {
+        model.addAttribute(USER_MODEL, new UserModel());
         return ScreenPathConst.M03_SCREEN;
     }
 
     // Chang Password User Login
     @PostMapping(RequestPathConst.M03)
-    public String changePassword(@ModelAttribute Account account, Model model, String confirmPassword) {
-        model.addAttribute(CONFIRM_PASSWORD, confirmPassword);
+    public String changePassword(@ModelAttribute UserModel userModel, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Account account1 = accountService.findByLoginId(auth.getName());
-        boolean check = accountService.checkIfValidOldPassword(account, account1.getPassword());
-        if (check == true) {
-            System.out.printf("aaa");
+        Account account = accountService.findByLoginId(auth.getName());
+        String newPassword = userModel.getNewPassword();
+        boolean check = accountService.checkIfValidOldPassword(userModel, account.getPassword());
+        if (check == false) {
+            model.addAttribute(ERROR, "error");
+            return ScreenPathConst.M03_SCREEN;
         }
-        model.addAttribute(ACCOUNT, account1);
-        return ScreenPathConst.M03_SCREEN;
+        account.setPassword(newPassword);
+        accountService.updateUser(account);
+        model.addAttribute(USER_MODEL, userModel);
+        return BaseConst.REDIRECT + RequestPathConst.M02;
     }
 }

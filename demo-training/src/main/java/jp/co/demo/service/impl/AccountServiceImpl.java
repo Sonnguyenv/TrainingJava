@@ -1,8 +1,10 @@
 package jp.co.demo.service.impl;
 
 import jp.co.demo.entity.Account;
+import jp.co.demo.model.UserModel;
 import jp.co.demo.repository.AccountRepository;
 import jp.co.demo.service.AccountService;
+import org.apache.tomcat.util.buf.UDecoder;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -27,7 +29,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account findByLoginId(String loginId) {
-        return accountRepository.findByLoginId(loginId);
+        Account account = accountRepository.findByLoginId(loginId);
+        return account;
     }
 
     public void createUser(Account account) {
@@ -56,7 +59,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public boolean checkIfValidOldPassword(final Account account, final String oldPassword) {
-        return passwordEncoder.matches(account.getPassword(), oldPassword);
+    public boolean checkIfValidOldPassword(final UserModel userModel, final String oldPassword) {
+        return passwordEncoder.matches(userModel.getPassword(), oldPassword);
     }
 }

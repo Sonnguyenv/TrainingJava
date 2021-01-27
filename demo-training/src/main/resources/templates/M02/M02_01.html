@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col">
                             <form name= "Create User" th:action="@{/M/M02_01}" th:object="${account}" th:method="post">
-                                <div class="form-group row" th:if="${account.id != null}">
+                                <div class="form-group row" th:if="${account.loginId != null}">
                                     <div class="col-sm-3">&#8203;</div>
                                     <div class="col-sm-9">
                                         <div class="alert alert-danger">
