@@ -18,4 +18,10 @@ public interface AccountService {
     Account findByLoginId(String loginId);
     Page<Account> findPaginated(int pageNo, int pageSize, Account account);
     boolean checkIfValidOldPassword(UserModel userModel, String password);
+
+    void createUser(Account account);
+
+    void updateUser(Account account);
+
+    void deleteUser(Account account);
 }

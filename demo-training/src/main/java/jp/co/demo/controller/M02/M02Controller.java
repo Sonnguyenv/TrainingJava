@@ -5,6 +5,7 @@ import jp.co.demo.common.RequestPathConst;
 import jp.co.demo.common.ScreenPathConst;
 import jp.co.demo.entity.Account;
 import jp.co.demo.model.UserModel;
+import jp.co.demo.service.AccountService;
 import jp.co.demo.service.impl.AccountServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.buf.UDecoder;
@@ -41,9 +42,9 @@ public class M02Controller {
     protected static final String EDIT = "Edit";
     protected static final String DELETE = "Delete";
 
-    private final AccountServiceImpl accountService;
+    private final AccountService accountService;
 
-    public M02Controller(AccountServiceImpl accountService) {
+    public M02Controller(AccountService accountService) {
         this.accountService = accountService;
     }
 

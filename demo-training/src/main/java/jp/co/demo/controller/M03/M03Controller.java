@@ -43,7 +43,7 @@ public class M03Controller {
         String newPassword = userModel.getNewPassword();
         boolean check = accountService.checkIfValidOldPassword(userModel, account.getPassword());
         model.addAttribute(USER_MODEL, userModel);
-        if (check == false) {
+        if (!check) {
             model.addAttribute(ERROR, "error");
             return ScreenPathConst.M03_SCREEN;
         }
